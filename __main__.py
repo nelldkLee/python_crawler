@@ -46,7 +46,8 @@ def crawling_pelicana():
 def crawling_nene():
     results = []
     overlapcheck = ''
-    for page in count(start=1):
+    # for page in count(start=1):
+    for page in range(1,5):
         stopcheck = False
         url = "https://nenechicken.com/17_new/sub_shop01.asp?page=%d&ex_select=1&ex_select2=&IndexSword=&GUBUN=A" % page
         try:
@@ -143,6 +144,6 @@ def crawling_goobne():
 if __name__ == '__main__':
     # pelicana
     # crawling_pelicana()
-    crawling_kyochon()
-    # crawling_nene()
+    # crawling_kyochon()
+    crawling_nene()
     # crawling_goobne()
