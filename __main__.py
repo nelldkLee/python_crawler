@@ -6,7 +6,7 @@ from datetime import datetime
 from itertools import count
 from urllib.request import Request, urlopen
 
-import pandas as pd
+# import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
@@ -40,8 +40,8 @@ def crawling_pelicana():
 
     # store
     #0,화명점,부산광역시 북구 화명동 1417-6,부산광역시,북구
-    table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
-    table.to_csv('__results__/pelicana2.csv', encoding='utf-8', mode='w', index=True)
+    # table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
+    # table.to_csv('__results__/pelicana2.csv', encoding='utf-8', mode='w', index=True)
 
 
 def crawling_nene():
@@ -78,10 +78,11 @@ def crawling_nene():
             results.append(t)
         if stopcheck == True:
             break
-
-    table = pd.DataFrame(results, columns=['name', 'address', 'telephone', 'sido', 'gugun'])
-
-    table.to_csv('/root/crawling-results/nene.csv', encoding='utf-8', mode='w', index=True)
+    for result in results:
+        print(result)
+    # table = pd.DataFrame(results, columns=['name', 'address', 'telephone', 'sido', 'gugun'])
+    #
+    # table.to_csv('/root/crawling-results/nene.csv', encoding='utf-8', mode='w', index=True)
 
 
 def crawling_kyochon():
@@ -108,8 +109,8 @@ def crawling_kyochon():
                 results.append((name, address) + tuple(sidogu))
 
             # store
-        table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
-        table.to_csv('__results__/kyochon.csv', encoding='utf-8', mode='w', index=True)
+        # table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
+        # table.to_csv('__results__/kyochon.csv', encoding='utf-8', mode='w', index=True)
 
 
 def crawling_goobne():
@@ -143,8 +144,8 @@ def crawling_goobne():
             results.append((name, address) + tuple(sidogu))
     wd.quit()
 
-    table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
-    table.to_csv('__results__/goobne.csv', encoding='utf-8', mode='w', index=True)
+    # table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
+    # table.to_csv('__results__/goobne.csv', encoding='utf-8', mode='w', index=True)
 if __name__ == '__main__':
     # pelicana
     # crawling_pelicana()
