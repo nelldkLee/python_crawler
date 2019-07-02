@@ -1,3 +1,4 @@
+import os
 import ssl
 import sys
 import time
@@ -46,6 +47,7 @@ def crawling_pelicana():
 def crawling_nene():
     results = []
     overlapcheck = ''
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     # for page in count(start=1):
     for page in range(1,5):
         stopcheck = False
@@ -78,7 +80,9 @@ def crawling_nene():
             break
 
     table = pd.DataFrame(results, columns=['name', 'address', 'telephone', 'sido', 'gugun'])
-    table.to_csv('__results__/nene.csv', encoding='utf-8', mode='w', index=True)
+
+    table.to_csv('/root/crawling-results/nene.csv', encoding='utf-8', mode='w', index=True)
+
 
 def crawling_kyochon():
     results = []
@@ -109,7 +113,7 @@ def crawling_kyochon():
 
 
 def crawling_goobne():
-    wd = webdriver.Chrome('D:/cafe24/chromedriver_win32/chromedriver.exe')
+    wd = webdriver.Chrome('/cafe24/chromedriver_win32/chromedriver.exe')
     wd.get('http://goobne.co.kr/store/search_store.jsp')
     time.sleep(3)
     results = []
